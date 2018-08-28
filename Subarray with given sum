@@ -1,0 +1,48 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+/*Given an unsorted array of non-negative integers, find a continuous sub-array which adds to a given number.*/
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		
+		while(t-->0){
+		    
+		    int n=sc.nextInt();
+		    
+		    int sum=sc.nextInt();
+		    
+		    int ar[]=new int[n];
+		    
+		    for(int i=0;i<n;i++)ar[i]=sc.nextInt();
+		    
+		    int curr_sum=ar[0],start=0;boolean flag=true;
+		    
+		    for(int i=1;i<=n;i++){
+		        
+		        while(curr_sum>sum && start<i-1){
+		            curr_sum-=ar[start];
+		            start++;
+		        }
+		        if(curr_sum==sum){
+		            
+		            System.out.println("SubArray found at starting position "+(start+1)+" ending at position "+(i));
+		            flag=false;
+		            break;
+		        }
+		        if(i<n-1)curr_sum+=ar[i];
+		    }
+		    if(flag)System.out.println("No subarray exists with sum "+sum);
+		    
+		}
+	}
+}
