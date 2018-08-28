@@ -1,0 +1,55 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+/*
+In a big party where a log register for guest’s entry and
+exit times is maintained. we need to find the time at which there are maximum guests in the party.
+*/
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		
+		while(t-->0){
+		    int n=sc.nextInt();
+		    
+		    int entry[]=new int[n];
+		    
+		    int exit[]=new int[n];
+		    
+		    for(int i=0;i<n;i++)entry[i]=sc.nextInt();
+		    
+		    for(int i=0;i<n;i++)exit[i]=sc.nextInt();
+		    
+		    Arrays.sort(entry);
+		    Arrays.sort(exit);
+		    
+		    int in=0,out=0,guest=0,maxGuest=0,time=0;
+		    
+		    while( in<n && out<n){
+		        if(entry[in]<=exit[out]){
+		            guest++;
+		            if(guest>maxGuest){
+		            maxGuest=guest;
+		            time=entry[in];
+		        }
+		            in++;
+		        }
+		        else {
+		            guest--;
+		            out++;
+		        }
+		        
+		       
+		    }
+		    System.out.println(maxGuest+" "+time);
+		}
+	}
+}
